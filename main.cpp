@@ -3,7 +3,7 @@
 #pragma GCC optimize("Ofast")
 #define int long long
 using namespace std;
-int n,a[100001];
+int n,a[100001],rk1[100001];
 double rk[100001];
 int inf=1e9;
 int bf(int p,double m){
@@ -24,9 +24,9 @@ signed main()
 {
     //freopen("1.in","r",stdin);
     //freopen("2.out","w",stdout);
-    cin>>n;
+    scanf("%lld",&n);
     for(int i=1;i<=n;i++){
-        cin>>a[i];
+        scanf("%lld%lld",&rk1[i],&a[i]);
     }
     fill(rk+1,rk+n+1,1);
     for(int i=1;i<=n;i++){
@@ -36,7 +36,7 @@ signed main()
         }
     }
     for(int i=1;i<=n;i++){
-        double m=sqrt(i*rk[i]);
-        printf("%5d %5d %c%-5d %-5d\n",i,a[i],((a[i]+(bf(i,m)-a[i])/2)-a[i]>=0?'+':'-'),abs(a[i]+(bf(i,m)-a[i])/2-a[i]),a[i]+(bf(i,m)-a[i])/2);
+        double m=sqrt(rk1[i]*rk[i]);
+        printf("%5d %5d %c%-5d %-5d\n",rk1[i],a[i],((a[i]+(bf(i,m)-a[i])/2)-a[i]>=0?'+':'-'),abs(a[i]+(bf(i,m)-a[i])/2-a[i]),a[i]+(bf(i,m)-a[i])/2);
     }
 }
