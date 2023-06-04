@@ -22,8 +22,8 @@ int bf(int p,double m){
 }
 signed main()
 {
-    //freopen("1.in","r",stdin);
-    //freopen("2.out","w",stdout);
+    freopen("1.in","r",stdin);
+    freopen("2.out","w",stdout);
     scanf("%lld",&n);
     for(int i=1;i<=n;i++){
         scanf("%lld%lld",&rk1[i],&a[i]);
@@ -37,6 +37,10 @@ signed main()
     }
     for(int i=1;i<=n;i++){
         double m=sqrt(rk1[i]*rk[i]);
-        printf("%5d %5d %c%-5d %-5d\n",rk1[i],a[i],((a[i]+(bf(i,m)-a[i])/2)-a[i]>=0?'+':'-'),abs(a[i]+(bf(i,m)-a[i])/2-a[i]),a[i]+(bf(i,m)-a[i])/2);
+        printf("%5d %5d %c%-5d %-5d ",rk1[i],a[i],((a[i]+(bf(i,m)-a[i])/2)-a[i]>=0?'+':'-'),abs(a[i]+(bf(i,m)-a[i])/2-a[i]),a[i]+(bf(i,m)-a[i])/2);
+        if(rk1[i]==1)printf("(inf)");
+        else if(rk1[i]==n)printf("(-inf)");
+        else printf("(%5d)",bf(i,rk1[i]));
+        printf("\n");
     }
 }
